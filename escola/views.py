@@ -23,3 +23,11 @@ class EscolaViewSet(viewsets.ModelViewSet):
         return Response({'messege': 'doado!'})
 
 
+    @action(detail=True, methods=["POST"])
+    def cancelar(self,request,pk=None):
+        doacao = Doacao.objects.get(pk=request.data['doacao'])
+        doacao.escola = None
+        doacao.save(update_fields=["escola"])
+        return Response({'messege': 'Cancelado a doação'})
+
+
