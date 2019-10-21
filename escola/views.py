@@ -6,6 +6,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from doacao.models import Doacao
+from doacao.serializers import DoacaoSerializer
 from escola.models import Escola
 from escola.serializers import EscolaSerializer
 
@@ -29,5 +30,10 @@ class EscolaViewSet(viewsets.ModelViewSet):
         doacao.escola = None
         doacao.save(update_fields=["escola"])
         return Response({'messege': 'Cancelado a doação'})
+
+    @action(detail=True,methods=["GET"])
+    def aceitados(self,request,pk=None):
+        doacao = Doacao.objects.all().filter(escola=pk)
+        return Response(DoacaoSerializer(doacao, many=True).data)
 
 
