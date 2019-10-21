@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
+from doacao.views import DoacaoViewSet
 from doador.views import DoadorViewSet
 from escola.views import EscolaViewSet
 
 router = routers.DefaultRouter()
 router.register(r"escolas", EscolaViewSet)
-router.register(r"Doadores",DoadorViewSet)
+router.register(r"doadores",DoadorViewSet)
+router.register(r"doacoes",DoacaoViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include(router.urls))

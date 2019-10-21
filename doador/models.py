@@ -15,3 +15,6 @@ class Doador(models.Model):
     telefone = models.CharField(max_length=10)
     email = models.EmailField(max_length=255)
     senha = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.nome
