@@ -9,7 +9,7 @@ class Doador(models.Model):
 
     )
     nome = models.CharField(max_length=255)
-    idade = models.IntegerField(max_length=255)
+    idade = models.IntegerField()
     endereco = models.CharField(max_length=255)
     estado = models.CharField(choices=ESTADO, max_length=255)
     telefone = models.CharField(max_length=10)
