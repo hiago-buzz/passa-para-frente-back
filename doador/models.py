@@ -9,12 +9,14 @@ class Doador(models.Model):
 
     )
     nome = models.CharField(max_length=255)
-    idade = models.IntegerField()
+    idade = models.CharField(max_length=255)
     endereco = models.CharField(max_length=255)
     estado = models.CharField(choices=ESTADO, max_length=255)
-    telefone = models.CharField(max_length=10)
+    telefone = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     senha = models.CharField(max_length=255)
+    
+
 
     def __str__(self):
         return self.nome
